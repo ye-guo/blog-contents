@@ -1,6 +1,25 @@
 # Nginx二级域名反向代理
 
-```
+---
+
+title: Nginx二级域名反向代理
+
+author: yeguo 
+
+time: 2024-04-15 
+
+category: 技术杂谈
+
+tags: 
+
+- nginx
+- 反向代理
+
+---
+
+**配置如下：**
+
+```nginx
 server {
     # SSL 默认访问端口号为 443
     listen 443 ssl;
