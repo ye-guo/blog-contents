@@ -4,9 +4,7 @@
 
 title: Nginx二级域名反向代理
 
-author: yeguo 
-
-time: 2024-04-15 
+date: 2024-04-15 
 
 category: 技术杂谈
 
