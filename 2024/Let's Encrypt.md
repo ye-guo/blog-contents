@@ -53,13 +53,21 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-## 三、配置snap插件信任
+## 三、直接生成证书
+
+```bash
+sudo certbot certonly --standalone -d example.com -d www.example.com
+```
+
+## 四、DNS验证方式
+
+### 1、配置snap插件信任
 
 ```bash
 sudo snap set certbot trust-plugin-with-root=ok
 ```
 
-## 四、安装DNS插件
+### 2、安装DNS插件
 
 Certbot 提供了一系列 DNS 插件，适用于不同的 DNS 提供商。
 
@@ -81,7 +89,7 @@ Certbot 提供了一系列 DNS 插件，适用于不同的 DNS 提供商。
   sudo snap install certbot-dns-route53
   ```
 
-## 五、配置 DNS API 凭证
+### 3、配置 DNS API 凭证
 
 我使用的是Cloudflare的DNS
 
@@ -92,7 +100,7 @@ echo "dns_cloudflare_api_key = your-api-key" >> ~/.secrets/certbot/cloudflare.in
 chmod 600 ~/.secrets/certbot/cloudflare.ini
 ```
 
-## 六、生成泛域名证书
+### 4、生成泛域名证书
 
 ```bash
 sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d "*.example.com" -d "example.com"
@@ -106,7 +114,7 @@ sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/c
 
 生成的证书和密钥一般在/etc/letsencrypt/live/example.com目录下
 
-## 七、测试自动续约
+## 五、测试自动续约
 
 let's encrypt 的证书一般只有三个月时效
 
